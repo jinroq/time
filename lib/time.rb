@@ -2,6 +2,7 @@
 # shareable_constant_value: literal
 
 require 'date'
+require 'time_core'
 
 # :stopdoc:
 
@@ -381,7 +382,7 @@ class Time
     #
     def parse(date, now=self.now)
       comp = !block_given?
-      d = Date._parse(date, comp)
+      d = Time._parse(date, comp)
       year = d[:year]
       year = yield(year) if year && !comp
       make_time(date, year, d[:yday], d[:mon], d[:mday], d[:hour], d[:min], d[:sec], d[:sec_fraction], d[:zone], now)
